@@ -15,7 +15,9 @@ jobs:
           gradle-version: "8.7"
       - run: gradle assembleDebug
         working-directory: proj
+      - run: find . -name "*.apk"
       - uses: actions/upload-artifact@v4
         with:
           name: Jarvis-APK
-          path: proj/app/build/outputs/ap
+          path: "**/*.apk"
+          if-no-files-found: error
